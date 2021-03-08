@@ -1,0 +1,4 @@
+<template>
+    <c-search-cmp onselected={handleSelect} if:true={searchMode} search-label="Account Search"></c-search-cmp>
+    <c-detail-cmp record-id={selectedId} display-mode={displayMode} if:false={searchMode} onbtnclick={handleBtnClick}></c-detail-cmp>
+</template>

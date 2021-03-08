@@ -1,0 +1,28 @@
+<template>
+    <lightning-card title="Hi Simplus2!">
+        <div class="searchClass">
+            <!-- Input -->
+            <lightning-input
+                    name="enter-search"
+                    label={searchLabel} type="search"
+                    onchange={handleSearch}>
+            </lightning-input>
+            <!-- Dropdown -->
+            <div class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid" role="listbox" if:true={hasResults}>
+                <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                    <template for:each={resultList} for:item="record">
+                        <li role="presentation" class="slds-listbox__item" key={record.Id}>
+                            <div class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small" role="option" 
+                            data-id={record.Id} data-name={record.Name} onclick={setSelectedRecord}>
+                                <span class="slds-media__figure slds-listbox__option-icon"></span>
+                                <span class="slds-media__body">
+                                    <span class="slds-truncate" title="Accounts">{record.Name}</span>
+                                </span>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </div>
+    </lightning-card>
+</template>

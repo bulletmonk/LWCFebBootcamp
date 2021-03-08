@@ -1,0 +1,82 @@
+<template>
+    
+    <!-- Header -->
+    <div class="slds-page-header slds-page-header_record-home">
+        <div class="slds-page-header__row">
+          <div class="slds-page-header__col-title">
+            <div class="slds-media">
+              <div class="slds-media__figure">
+                <span class="slds-icon_container slds-icon-standard-opportunity">
+                  <svg class="slds-icon slds-page-header__icon" aria-hidden="true">
+                    <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"></use>
+                  </svg>
+                </span>
+              </div>
+              <div class="slds-media__body">
+                <div class="slds-page-header__name">
+                  <div class="slds-page-header__name-title" if:true={recordPopulated}>
+                    <h1>
+                      <span>Account</span>
+                      <span class="slds-page-header__title slds-truncate">{record.Name}</span>
+                    </h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slds-page-header__col-actions">
+            <div class="slds-page-header__controls">
+              <div class="slds-page-header__control">
+                <ul class="slds-button-group-list" if:true={viewMode}>
+                  <li>
+                    <button class="slds-button slds-button_neutral" onclick={handleBack}>Back</button>
+                  </li>
+                  <li>
+                    <button class="slds-button slds-button_neutral" onclick={handleEdit}>Edit</button>
+                  </li>
+                </ul>
+                <ul class="slds-button-group-list" if:true={editMode}>
+                  <li>
+                    <button class="slds-button slds-button_neutral" onclick={handleCancel}>Cancel</button>
+                  </li>
+                  <li>
+                    <button class="slds-button slds-button_neutral" onclick={handleFinish}>Finish</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- Detail -->
+    <lightning-card>
+        <lightning-record-edit-form record-id={recordId}
+                                    object-api-name="Account" if:true={viewMode}>
+            <lightning-messages>
+            </lightning-messages>
+            <lightning-output-field field-name="Name">
+            </lightning-output-field>
+            <lightning-output-field field-name="Industry">
+            </lightning-output-field>
+            <lightning-output-field field-name="Type">
+            </lightning-output-field>
+            <lightning-output-field field-name="Website">
+            </lightning-output-field>
+        </lightning-record-edit-form>
+        
+        <lightning-record-edit-form record-id={recordId}
+                                    object-api-name="Account" if:true={editMode}
+                                    onsuccess={handleSuccess}>
+            <lightning-messages>
+            </lightning-messages>
+            <lightning-input-field field-name="Name">
+            </lightning-input-field>
+            <lightning-input-field field-name="Industry">
+            </lightning-input-field>
+            <lightning-input-field field-name="Type">
+            </lightning-input-field>
+            <lightning-input-field field-name="Website">
+            </lightning-input-field>
+        </lightning-record-edit-form>
+    </lightning-card>
+</template>
